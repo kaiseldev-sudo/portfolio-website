@@ -15,6 +15,11 @@ export default function Portfolio() {
   const [isHoveringProject, setIsHoveringProject] = useState(false)
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<number | null>(0); // 0 = first open by default, 1 = second, null = none
+  const testimonials = [
+    '"Dousan is very kind and incredibly generous in sharing his past experience and all his knowledge to help others grow. He gave me such great feedback on how to tailor my portfolio and cv for the roles I\'m applying for"',
+    '"Working with Dousan was a game changer for my career. His advice was practical and actionable, and he always made time to answer my questions."',
+  ];
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   // Track the text color being hovered
   const sectionRefs = {
     hero: useRef(null),
@@ -34,8 +39,9 @@ export default function Portfolio() {
   }, [])
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    const updateMousePosition = (e: Event) => {
+      const mouseEvent = e as MouseEvent;
+      setMousePosition({ x: mouseEvent.clientX, y: mouseEvent.clientY })
     }
 
     window.addEventListener("mousemove", updateMousePosition)
@@ -48,7 +54,7 @@ export default function Portfolio() {
       rootMargin: "-10% 0px -10% 0px",
     }
 
-    const observerCallback = (entries) => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setVisibleSections((prev) => new Set([...prev, entry.target.id]))
@@ -287,7 +293,7 @@ export default function Portfolio() {
             onMouseLeave={() => setIsHoveringText(false)}
           >
             {
-              "I’m Jayson, a full-stack web developer with 3 years of experience, driven by curiosity. I’m currently seeking "
+              "I'm Jayson, a full-stack web developer with 3 years of experience, driven by curiosity. I'm currently seeking "
             }
             <span className="text-green-400">new opportunities</span>
             {",  to showcase my expertise while actively "}
@@ -350,14 +356,14 @@ export default function Portfolio() {
       </section>
 
       {/* Selected Works */}
-      <section id="work" ref={sectionRefs.work} className="px-6 md:px-12 lg:px-24 py-24">
+      <section id="work" ref={sectionRefs.work} className="px-6 md:px-12 lg:px-60 py-24">
         <div
           className={`flex justify-between items-center mb-12 transition-all duration-1000 ${
             visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h2
-            className="text-3xl md:text-4xl font-light"
+            className="text-3xl md:text-6xl font-light"
             onMouseEnter={() => setIsHoveringText(true)}
             onMouseLeave={() => setIsHoveringText(false)}
           >
@@ -502,11 +508,11 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" ref={sectionRefs.about} className="px-6 md:px-12 lg:px-24 py-24">
+      <section id="about" ref={sectionRefs.about} className="px-6 md:px-12 lg:px-60 py-24">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <h2
-              className={`text-3xl md:text-4xl font-light mb-8 transition-all duration-1000 ${
+              className={`text-3xl md:text-6xl font-light mb-8 transition-all duration-1000 ${
                 visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -522,11 +528,11 @@ export default function Portfolio() {
           >
             <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
               {
-                "I’m Jayson, a versatile web developer with "
+                "I'm Jayson, a versatile web developer with "
               }
               <span className="text-green-400">3 years of experience </span>
               {
-                "and a Bachelor’s degree in Information Technology from "
+                "and a Bachelor's degree in Information Technology from "
               }
               <span className="text-green-400">Computer Arts and Technological College, Inc.</span>
               {
@@ -539,7 +545,7 @@ export default function Portfolio() {
               }
             </p>
             <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
-              {"Beyond web development, I’m diving into Web3, exploring the world of cryptocurrency trading and airdrops, and enjoying downtime playing guitar or spending time with my dog, Bela"}
+              {"Beyond web development, I'm diving into Web3, exploring the world of cryptocurrency trading and airdrops, and enjoying downtime playing guitar or spending time with my dog, Bela"}
             </p>
           </div>
         </div>
@@ -653,11 +659,11 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" ref={sectionRefs.skills} className="px-6 md:px-12 lg:px-24 py-24">
+      <section id="skills" ref={sectionRefs.skills} className="px-6 md:px-12 lg:px-60 py-24">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <h2
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} text-2xl mb-8 transition-all duration-1000 ${
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} text-2xl mb-8 font-semibold transition-all duration-1000 ${
                 visibleSections.has("skills") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -694,11 +700,11 @@ export default function Portfolio() {
       </section>
 
       {/* Coaching Section */}
-      <section id="coaching" ref={sectionRefs.coaching} className="px-6 md:px-12 lg:px-24 py-24">
+      <section id="coaching" ref={sectionRefs.coaching} className="px-6 md:px-12 lg:px-60 py-24">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <h2
-              className={`text-3xl md:text-4xl font-light mb-8 transition-all duration-1000 ${
+              className={`text-3xl md:text-6xl font-light mb-8 transition-all duration-1000 ${
                 visibleSections.has("coaching") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -771,25 +777,32 @@ export default function Portfolio() {
               <Card
                 className={`transition-all duration-300 hover:scale-[1.02] cursor-none ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
               >
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex items-center justify-between gap-4">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="transition-all duration-300 hover:scale-110 cursor-none bg-white p-4 rounded-full"
+                    onClick={() => setTestimonialIndex((testimonialIndex - 1 + testimonials.length) % testimonials.length)}
+                    aria-label="Previous testimonial"
+                  >
+                    <ChevronRight className="h-4 w-4 rotate-180" />
+                  </Button>
                   <p
-                    className="text-gray-300 mb-4"
+                    className="text-gray-300 mb-0 flex-1"
                     onMouseEnter={() => setIsHoveringText(true)}
                     onMouseLeave={() => setIsHoveringText(false)}
                   >
-                    {
-                      '"Dousan is very kind and incredibly generous in sharing his past experience and all his knowledge to help others grow. He gave me such great feedback on how to tailor my portfolio and cv for the roles I\'m applying for"'
-                    }
+                    {testimonials[testimonialIndex]}
                   </p>
-                  <div className="flex justify-end">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="transition-all duration-300 hover:scale-110 cursor-none"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="transition-all duration-300 hover:scale-110 cursor-none bg-white p-4 rounded-full"
+                    onClick={() => setTestimonialIndex((testimonialIndex + 1) % testimonials.length)}
+                    aria-label="Next testimonial"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
                 </CardContent>
               </Card>
             </div>
