@@ -326,7 +326,7 @@ export default function Portfolio() {
       >
         <div className="max-w-6xl">
           <h1
-            className={`text-3xl md:text-5xl lg:text-6xl font-light text-justify leading-tight transition-all duration-1000 ${
+            className={`text-3xl md:text-5xl lg:text-6xl font-light leading-tight transition-all duration-1000 ${
               visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             onMouseEnter={() => setIsHoveringText(true)}
