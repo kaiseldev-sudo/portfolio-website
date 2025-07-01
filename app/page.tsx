@@ -324,7 +324,7 @@ export default function Portfolio() {
           </h1>
         </div>
 
-         <div className="flex flex-col gap-4 mb-16 lg:mb-1">
+         <div className="flex flex-col gap-4 mb-20 lg:mb-1">
          <div
             className={`flex flex-wrap gap-4 transition-all duration-1000 delay-200 ${
               visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -361,7 +361,7 @@ export default function Portfolio() {
               }`}
             >
               <p
-                className={`text-sm   lg:text-lg ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+                className={`text-sm lg:text-lg ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
                 onMouseEnter={() => setIsHoveringText(true)}
                 onMouseLeave={() => setIsHoveringText(false)}
               >
@@ -369,7 +369,7 @@ export default function Portfolio() {
               </p>
               <Button
                 variant="ghost"
-                className="text-green-400 hover:text-green-300 transition-all duration-300 cursor-none"
+                className="text-green-400 hover:text-green-300 transition-all duration-300 cursor-none text-sm lg:text-lg "
               >
                 See Selected Works <ArrowDown className="h-4 w-4" />
               </Button>
