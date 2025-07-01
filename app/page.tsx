@@ -389,7 +389,8 @@ export default function Portfolio() {
                 variant="ghost"
                 className={`text-green-400 hover:text-green-300 transition-all duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"} text-sm lg:text-lg`}
               >
-                See Selected Works <ArrowDown className="h-4 w-4" />
+                <a href="#work" className="flex items-center gap-2">See Selected Works <ArrowDown className="h-4 w-4" /></a>
+                
               </Button>
             </div>
          </div>
