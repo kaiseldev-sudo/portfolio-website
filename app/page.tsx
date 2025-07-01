@@ -709,7 +709,7 @@ export default function Portfolio() {
                     : "opacity-0 -translate-y-4 max-h-0 overflow-hidden pointer-events-none"
                 }`}
               >
-                Developed and maintained the school's website and web applications, building secure, database-driven solutions to improve the digital experience.
+                ${`Developed and maintained the school's website and web applications, building secure, database-driven solutions to improve the digital experience.` }
               </div>
             </div>
 
@@ -802,7 +802,7 @@ export default function Portfolio() {
               onMouseEnter={() => setIsHoveringText(true)}
               onMouseLeave={() => setIsHoveringText(false)}
             >
-              What I'm known for
+              ${`What I'm known for`}
             </h2>
           </div>
           <div className="space-y-4">
