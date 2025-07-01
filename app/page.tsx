@@ -126,7 +126,7 @@ export default function Portfolio() {
 
       {/* Navigation */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 px-20 p-6 flex justify-between items-center transition-all duration-500 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50 px-6 lg:px-20 p-6 flex justify-between items-center transition-all duration-500 ease-out ${
           headerBackground
             ? isDarkMode
               ? "bg-black/60 backdrop-blur-sm"
@@ -183,7 +183,7 @@ export default function Portfolio() {
         >
           <div className="h-full flex flex-col animate-in fade-in duration-500">
             {/* Menu Header */}
-            <div className="px-20 p-6 flex justify-between items-center duration-700 delay-100">
+            <div className="px-6 lg:px-20 p-6 flex justify-between items-center duration-700 delay-100">
             <div className={`text-3xl font-semibold transition-colors duration-300 logo-font ${isDarkMode ? "text-white" : "text-neutral-950"}`}>
               jayson.
             </div>
