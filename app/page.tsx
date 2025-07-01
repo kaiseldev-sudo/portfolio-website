@@ -16,9 +16,10 @@ export default function Portfolio() {
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<number | null>(0)
   const testimonials = [
-    '"Dousan is very kind and incredibly generous in sharing his past experience and all his knowledge to help others grow. He gave me such great feedback on how to tailor my portfolio and cv for the roles I\'m applying for"',
-    '"Working with Dousan was a game changer for my career. His advice was practical and actionable, and he always made time to answer my questions."',
+    'Sir Jayson is an amazing instructor — he explains complex programming concepts in a simple, clear way that helped me build real projects with confidence.',
+    'Learning from Sir Jayson transformed my skills. His hands-on lessons and constant support made me feel ready to tackle real-world web development challenges.',
   ];
+  
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   // Track the text color being hovered
   const sectionRefs = {
@@ -351,7 +352,7 @@ export default function Portfolio() {
               variant="outline"
               className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
             >
-              🚀 Building SHIPPEDs
+              🚀 Building personal projects
             </Badge>
           </div>
           <div
@@ -437,15 +438,15 @@ export default function Portfolio() {
                 onMouseEnter={() => setIsHoveringText(true)}
                 onMouseLeave={() => setIsHoveringText(false)}
               >
-                Emergency Satellite Messaging
+                E-commerce for farmers
               </p>
-              <p
+              {/* <p
                 className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} text-sm`}
                 onMouseEnter={() => setIsHoveringText(true)}
                 onMouseLeave={() => setIsHoveringText(false)}
               >
                 https://www.dousanmao.com/satellite-sos
-              </p>
+              </p> */}
             </div>
           </CardContent>
         </Card>
@@ -483,7 +484,7 @@ export default function Portfolio() {
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                 >
-                  Protect your apps from prying eyes
+                  A simple system for reserving tables and scheduling events at Kapuntukan Resto Bar.
                 </p>
               </div>
             </CardContent>
@@ -767,8 +768,10 @@ export default function Portfolio() {
                 visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <Download className="mr-2 h-4 w-4" />
-              Download CV
+              <a className="flex flex-row" target="_blank" href="https://drive.google.com/file/d/1NXpj89alSl-VGSrKevt2lnMX2gZd9ha6/view?usp=sharing">
+                <Download className="mr-2 h-4 w-4" />
+                Download CV
+              </a>
             </Button>
 
             <div
@@ -1011,10 +1014,11 @@ export default function Portfolio() {
                   LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="https://drive.google.com/file/d/1NXpj89alSl-VGSrKevt2lnMX2gZd9ha6/view?usp=sharing"
                   className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
+                  target="_blank"
                 >
                   See full CV
                 </a>
