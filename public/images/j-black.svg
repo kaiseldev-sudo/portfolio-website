@@ -1,0 +1,10 @@
+<svg width="640" height="800" viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="800" rx="24" fill="#0A0A0A"/>
+<circle cx="400" cy="360" r="40" fill="#F5F5F5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M440 480C440 457.909 422.091 440 400 440C377.909 440 360 457.909 360 480H440Z" fill="#F5F5F5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M280 560C280 537.909 262.091 520 240 520C217.909 520 200 537.909 200 560H280Z" fill="#F5F5F5"/>
+<rect x="360" y="480" width="80" height="80" fill="#F5F5F5"/>
+<path d="M200 560H280V640C235.817 640 200 604.183 200 560Z" fill="#F5F5F5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M320 640C342.091 640 360 622.091 360 600V640H320ZM280 600C280 622.091 297.909 640 320 640H280V600Z" fill="#F5F5F5"/>
+<path d="M360 560H440C440 604.183 404.183 640 360 640V560Z" fill="#F5F5F5"/>
+</svg>
