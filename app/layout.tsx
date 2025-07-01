@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: 'Jayson Reales | Web Developer',
     images: [
       {
-        url: 'https://jaysonreales.vercel.app/jayson.png',
+        url: 'https://jaysonreales.vercel.app/jayson_og.png',
         width: 1200,
         height: 630,
       },
