@@ -416,7 +416,7 @@ export default function Portfolio() {
                 alt="APCIA E-Commerce"
                 width={1200}
                 height={600}
-                className="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-[400px] md:h-[600px] object-contain transition-transform duration-500 hover:scale-105"
               />
               <Button
                 size="icon"
@@ -468,7 +468,7 @@ export default function Portfolio() {
                   alt="Kapuntukan Resto Bar Reservation and Scheduling"
                   width={600}
                   height={300}
-                  className="w-full h-[300px] object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-[300px] object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
               <div className="p-6">
@@ -505,7 +505,7 @@ export default function Portfolio() {
                   alt="Solana Staking DApp"
                   width={600}
                   height={300}
-                  className="w-full h-[300px] object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-[300px] object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
               <div className="p-6">
@@ -542,7 +542,7 @@ export default function Portfolio() {
                   alt="MindLeap"
                   width={600}
                   height={300}
-                  className="w-full h-[300px] object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-[300px] object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
               <div className="p-6">
