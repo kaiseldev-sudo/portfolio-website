@@ -16,8 +16,16 @@ export default function Portfolio() {
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<number | null>(0)
   const testimonials = [
-    'Sir Jayson is an amazing instructor — he explains complex programming concepts in a simple, clear way that helped me build real projects with confidence.',
-    'Learning from Sir Jayson transformed my skills. His hands-on lessons and constant support made me feel ready to tackle real-world web development challenges.',
+    {
+      text: 'Sir Jayson is an amazing instructor — he explains complex programming concepts in a simple, clear way that helped me build real projects with confidence.',
+      name: 'Alex Cruz',
+      image: '/images/profile1.jpg', // Example image from your public/images
+    },
+    {
+      text: 'Learning from Sir Jayson transformed my skills. His hands-on lessons and constant support made me feel ready to tackle real-world web development challenges.',
+      name: 'Jamie Santos',
+      image: '/images/profile.jpg', // Example image from your public/images
+    },
   ];
   
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -318,7 +326,7 @@ export default function Portfolio() {
       >
         <div className="max-w-6xl">
           <h1
-            className={`text-3xl md:text-5xl lg:text-6xl font-light leading-tight transition-all duration-1000 ${
+            className={`text-3xl md:text-5xl lg:text-6xl font-light text-justify leading-tight transition-all duration-1000 ${
               visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             onMouseEnter={() => setIsHoveringText(true)}
@@ -420,7 +428,7 @@ export default function Portfolio() {
         >
           <CardContent className="p-0">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+              <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
               <Image
                 src="/images/apcia.jpg?height=600&width=1200"
                 alt="APCIA E-Commerce"
@@ -472,7 +480,7 @@ export default function Portfolio() {
           >
             <CardContent className="p-0">
               <div className="relative">
-                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
                 <Image
                   src="/images/kapuntukan.png?height=300&width=600"
                   alt="Kapuntukan Resto Bar Reservation and Scheduling"
@@ -509,7 +517,7 @@ export default function Portfolio() {
           >
             <CardContent className="p-0">
               <div className="relative">
-                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
                 <Image
                   src="/images/solana.png?height=300&width=600"
                   alt="Solana Staking DApp"
@@ -866,7 +874,7 @@ export default function Portfolio() {
               Looking for 1:1 mentoring to grow your web development career?
             </h3>
             <p
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8 leading-relaxed transition-all duration-1000 delay-300 ${
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8 leading-relaxed transition-all text-justify duration-1000 delay-300 ${
                 visibleSections.has("mentoring") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -921,7 +929,7 @@ export default function Portfolio() {
               <Card
                 className={`transition-all duration-300 hover:scale-[1.02] ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
               >
-                <CardContent className="p-6 flex items-center justify-between gap-4">
+                <CardContent className="lg:p-6 flex items-center justify-between gap-3 lg:gap-4">
                   <Button
                     variant="ghost"
                     size="icon"
@@ -929,15 +937,17 @@ export default function Portfolio() {
                     onClick={() => setTestimonialIndex((testimonialIndex - 1 + testimonials.length) % testimonials.length)}
                     aria-label="Previous testimonial"
                   >
-                    <ChevronRight className="h-4 w-4 rotate-180" />
+                    <ChevronRight className="h-1 w-1 lg:h-3 lg:w-3 rotate-180" />
                   </Button>
-                  <p
-                    className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-0 flex-1`}
-                    onMouseEnter={() => setIsHoveringText(true)}
-                    onMouseLeave={() => setIsHoveringText(false)}
-                  >
-                    {testimonials[testimonialIndex]}
-                  </p>
+                  <div className="flex-1 flex flex-row items-center justify-center">
+                    <p
+                      className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-0 text-md text-justify lg:text-base`}
+                      onMouseEnter={() => setIsHoveringText(true)}
+                      onMouseLeave={() => setIsHoveringText(false)}
+                    >
+                      {testimonials[testimonialIndex].text}
+                    </p>
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon"
@@ -945,7 +955,7 @@ export default function Portfolio() {
                     onClick={() => setTestimonialIndex((testimonialIndex + 1) % testimonials.length)}
                     aria-label="Next testimonial"
                   >
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-1 w-1 lg:h-3 lg:w-3" />
                   </Button>
                 </CardContent>
               </Card>
@@ -1038,7 +1048,7 @@ export default function Portfolio() {
         </div>
 
         <div
-          className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
+          className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm lg:text-lg pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
         >
           <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
             © 2025 Jayson Reales
