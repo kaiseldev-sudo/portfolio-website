@@ -209,7 +209,7 @@ export default function Portfolio() {
             </div>
 
             {/* Menu Content */}
-            <div className="flex-1 flex flex-col justify-center items-center ms-60">
+            <div className="flex-1 flex flex-col justify-center items-center lg:ms-60">
               <nav>
                 <ul className="space-y-6 list-none">
                   <li className="relative group">
