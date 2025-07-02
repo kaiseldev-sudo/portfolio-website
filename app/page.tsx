@@ -343,37 +343,37 @@ export default function Portfolio() {
         </div>
 
          <div className="flex flex-col gap-4 lg:mb-1">
-         <div
-            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-200 ${
-              visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <Badge
-              variant="outline"
-              className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
-            >
-              💻 Frontend Development
-            </Badge>
-            <Badge
-              variant="outline"
-              className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
-            >
-              💾 Backend Development
-            </Badge>
-            <Badge
-              variant="outline"
-              className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
-            >
-              📱 Responsive Design
-            </Badge>
-            <Badge
-              variant="outline"
-              className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
-            >
-              🚀 Building personal projects
-            </Badge>
-          </div>
           <div
+              className={`flex flex-wrap gap-3 lg:gap-4 transition-all duration-1000 delay-200 ${
+                visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <Badge
+                variant="outline"
+                className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
+              >
+                💻 Frontend Development
+              </Badge>
+              <Badge
+                variant="outline"
+                className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
+              >
+                💾 Backend Development
+              </Badge>
+              <Badge
+                variant="outline"
+                className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
+              >
+                📱 Responsive Design
+              </Badge>
+              <Badge
+                variant="outline"
+                className={`transition-colors ${isDarkMode ? "border-gray-600 text-white" : "border-gray-400 text-neutral-950"}`}
+              >
+                🚀 Building personal projects
+              </Badge>
+            </div>
+            <div
               className={`flex justify-between items-center w-full transition-all duration-1000 delay-400 border-t border-gray-200/60   ${
                 visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
@@ -399,12 +399,12 @@ export default function Portfolio() {
       {/* Selected Works */}
       <section id="work" ref={sectionRefs.work} className="px-6 md:px-12 lg:px-30 py-10 lg:py-24">
         <div
-          className={`flex justify-between items-center mb-12 transition-all duration-1000 ${
+          className={`text-4xl md:text-6xlflex justify-between items-center mb-12 transition-all duration-1000 ${
             visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h2
-            className="text-3xl md:text-6xl font-light"
+            className="text-4xl md:text-6xl font-light"
             onMouseEnter={() => setIsHoveringText(true)}
             onMouseLeave={() => setIsHoveringText(false)}
           >
@@ -590,7 +590,7 @@ export default function Portfolio() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
             <h2
-              className={`text-3xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
+              className={`text-4xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
                 visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -600,7 +600,7 @@ export default function Portfolio() {
             </h2>
           </div>
           <div
-            className={`space-y-6 text-lg leading-relaxed transition-all duration-1000 delay-200 ${
+            className={`space-y-6 text-lg leading-relaxed transition-all text-justify duration-1000 delay-200 ${
               visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -672,7 +672,7 @@ export default function Portfolio() {
                 </Button>
               </div>
               <div
-                className={`mt-4 text-sm text-gray-400 transition-all duration-500 ${
+                className={`mt-4 text-sm text-justify text-gray-400 transition-all duration-500 ${
                   openDropdown === 0
                     ? "opacity-100 translate-y-0 max-h-40"
                     : "opacity-0 -translate-y-4 max-h-0 overflow-hidden pointer-events-none"
@@ -722,7 +722,7 @@ export default function Portfolio() {
                 </Button>
               </div>
               <div
-                className={`mt-4 text-sm text-gray-400 transition-all duration-500 ${
+                className={`mt-4 text-sm text-justify text-gray-400 transition-all duration-500 ${
                   openDropdown === 1
                     ? "opacity-100 translate-y-0 max-h-40"
                     : "opacity-0 -translate-y-4 max-h-0 overflow-hidden pointer-events-none"
@@ -772,7 +772,7 @@ export default function Portfolio() {
                 </Button>
               </div>
               <div
-                className={`mt-4 text-sm text-gray-400 transition-all duration-500 ${
+                className={`mt-4 text-sm text-justify text-gray-400 transition-all duration-500 ${
                   openDropdown === 2
                     ? "opacity-100 translate-y-0 max-h-40"
                     : "opacity-0 -translate-y-4 max-h-0 overflow-hidden pointer-events-none"
@@ -855,7 +855,7 @@ export default function Portfolio() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
             <h2
-              className={`text-5xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
+              className={`text-4xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
                 visibleSections.has("mentoring") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
