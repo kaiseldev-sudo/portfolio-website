@@ -324,7 +324,7 @@ export default function Portfolio() {
           </h1>
         </div>
 
-         <div className="flex flex-col gap-4 mb-20 lg:mb-1">
+         <div className="flex flex-col gap-4 lg:mb-1">
          <div
             className={`flex flex-wrap gap-4 transition-all duration-1000 delay-200 ${
               visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -378,7 +378,7 @@ export default function Portfolio() {
       </section>
 
       {/* Selected Works */}
-      <section id="work" ref={sectionRefs.work} className="px-6 md:px-12 lg:px-30 py-24">
+      <section id="work" ref={sectionRefs.work} className="px-6 md:px-12 lg:px-30 py-10 lg:py-24">
         <div
           className={`flex justify-between items-center mb-12 transition-all duration-1000 ${
             visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -567,11 +567,11 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" ref={sectionRefs.about} className="px-6 md:px-12 lg:px-30 py-24">
-        <div className="grid lg:grid-cols-2 gap-16">
+      <section id="about" ref={sectionRefs.about} className="px-6 md:px-12 lg:px-30 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
             <h2
-              className={`text-3xl md:text-6xl font-light mb-8 transition-all duration-1000 ${
+              className={`text-3xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
                 visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -610,7 +610,7 @@ export default function Portfolio() {
         </div>
 
         {/* Experience */}
-        <div className="mt-16 grid lg:grid-cols-2 gap-16">
+        <div className="lg:mt-16 grid lg:grid-cols-2 gap-16">
           <div></div>
           <div className="space-y-6">
             {/* First Experience */}
@@ -792,17 +792,17 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" ref={sectionRefs.skills} className="px-6 md:px-12 lg:px-30 py-24">
-        <div className="grid lg:grid-cols-2 gap-16">
+      <section id="skills" ref={sectionRefs.skills} className="px-6 md:px-12 lg:px-30 py-10 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
             <h2
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} text-2xl mb-8 font-light transition-all duration-1000 ${
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} lg:mb-8 text-3xl lg:text-2xl font-light transition-all duration-1000 ${
                 visibleSections.has("skills") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
               onMouseLeave={() => setIsHoveringText(false)}
             >
-              ${`What I'm known for`}
+              {`What I'm known for`}
             </h2>
           </div>
           <div className="space-y-4">
@@ -832,11 +832,11 @@ export default function Portfolio() {
       </section>
 
       {/* Mentoring Section */}
-      <section id="mentoring" ref={sectionRefs.mentoring} className="px-6 md:px-12 lg:px-30 py-24">
-        <div className="grid lg:grid-cols-2 gap-16">
+      <section id="mentoring" ref={sectionRefs.mentoring} className="px-6 md:px-12 lg:px-30 pb-10 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
             <h2
-              className={`text-3xl md:text-6xl font-light mb-8 transition-all duration-1000 ${
+              className={`text-5xl md:text-6xl font-light lg:mb-8 transition-all duration-1000 ${
                 visibleSections.has("mentoring") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -946,11 +946,11 @@ export default function Portfolio() {
 
       {/* Footer */}
       <footer
-        className={`px-6 md:px-12 lg:px-24 pt-24 pb-8 transition-colors ${isDarkMode ? "bg-neutral-900 border-t border-gray-800" : "border-t border-gray-200"}`}
+        className={`px-6 md:px-12 lg:px-24 pt-12 lg:pt-24 pb-8 transition-colors ${isDarkMode ? "bg-neutral-900 border-t border-gray-800" : "border-t border-gray-200"}`}
       >
         <div className="grid lg:grid-cols-2 gap-16 mb-16">
           <div>
-            <div className={`text-3xl font-semibold transition-colors logo-font ${isDarkMode ? "text-white" : "text-neutral-950"} mb-8`}>
+            <div className={`text-3xl font-semibold transition-colors logo-font ${isDarkMode ? "text-white" : "text-neutral-950"} lg:mb-8`}>
               jayson.
             </div>
           </div>
@@ -977,7 +977,7 @@ export default function Portfolio() {
               </div>
             </a>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-4 lg:gap-8">
               <div className="space-y-4">
                 <a
                   href="#about"
@@ -1028,13 +1028,13 @@ export default function Portfolio() {
         </div>
 
         <div
-          className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
+          className={`flex flex-col gap-2 ${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
         >
           <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
-            © 2025 Jayson Reales
+            Made with care and plenty of coffee
           </p>
           <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
-            Made with care and plenty of coffee
+            © 2025 Jayson Reales
           </p>
         </div>
       </footer>
