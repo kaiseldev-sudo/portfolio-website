@@ -18,6 +18,21 @@ export const metadata: Metadata = {
   icons: {
     icon: '/jayson.png',
   },
+  openGraph: {
+    title: 'Jayson Reales | Web Developer',
+    description: "Jayson Reales is a passionate Web Developer specializing in modern, responsive, and user-friendly websites.",
+    url: 'https://jaysonreales.vercel.app/',
+    siteName: 'Jayson Reales | Web Developer',
+    images: [
+      {
+        url: 'https://jaysonreales.vercel.app/jayson_og.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

@@ -16,11 +16,20 @@ export default function Portfolio() {
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<number | null>(0)
   const testimonials = [
-    'Sir Jayson is an amazing instructor — he explains complex programming concepts in a simple, clear way that helped me build real projects with confidence.',
-    'Learning from Sir Jayson transformed my skills. His hands-on lessons and constant support made me feel ready to tackle real-world web development challenges.',
+    {
+      text: 'Sir Jayson is an amazing instructor — he explains complex programming concepts in a simple, clear way that helped me build real projects with confidence.',
+      name: 'Alex Cruz',
+      image: '/images/profile1.jpg', // Example image from your public/images
+    },
+    {
+      text: 'Learning from Sir Jayson transformed my skills. His hands-on lessons and constant support made me feel ready to tackle real-world web development challenges.',
+      name: 'Jamie Santos',
+      image: '/images/profile.jpg', // Example image from your public/images
+    },
   ];
   
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
   // Track the text color being hovered
   const sectionRefs = {
     hero: useRef(null),
@@ -74,14 +83,23 @@ export default function Portfolio() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   const headerBackground = scrollY > 50
 
   return (
     <div
-    className={`min-h-screen transition-colors duration-300 cursor-none ${isDarkMode ? "bg-neutral-950 text-white" : "bg-gray-50 text-neutral-950"}`}
+    className={`min-h-screen transition-colors duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${isDarkMode ? "bg-neutral-950 text-white" : "bg-gray-50 text-neutral-950"}`}
     >
       {/* Custom Cursor */}
-      {!isHoveringText && (
+      {isLargeScreen && !isHoveringText && (
         <div
           className={`fixed pointer-events-none z-[9999] transition-all duration-300 ease-out ${
             isHoveringProject ? "scale-150" : "scale-100"
@@ -110,7 +128,7 @@ export default function Portfolio() {
       )}
 
       {/* Custom Text Cursor */}
-      {isHoveringText && (
+      {isLargeScreen && isHoveringText && (
         <div
           className="fixed pointer-events-none z-[9999] transition-all duration-300 ease-out"
           style={{
@@ -140,7 +158,7 @@ export default function Portfolio() {
         <div className="flex gap-4">
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`p-2 rounded-full transition-all duration-300 cursor-none ${
+            className={`p-2 rounded-full transition-all duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${
               isDarkMode ? "hover:bg-white/10" : "hover:bg-black/10"
             } ${headerBackground ? "backdrop-blur-sm" : ""}`}
           >
@@ -152,7 +170,7 @@ export default function Portfolio() {
           </button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`p-2 rounded-full transition-all duration-300 cursor-none ${
+            className={`p-2 rounded-full transition-all duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${
               isDarkMode ? "hover:bg-white/10" : "hover:bg-black/10"
             } ${headerBackground ? "backdrop-blur-sm" : ""}`}
           >
@@ -179,7 +197,7 @@ export default function Portfolio() {
       {/* Full Screen Menu Overlay */}
       {isMenuOpen && (
         <div
-          className={`fixed inset-0 z-40 transition-all duration-500 cursor-none ${isDarkMode ? "bg-black" : "bg-white"}`}
+          className={`fixed inset-0 z-40 transition-all duration-500 ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${isDarkMode ? "bg-black" : "bg-white"}`}
         >
           <div className="h-full flex flex-col animate-in fade-in duration-500">
             {/* Menu Header */}
@@ -190,13 +208,13 @@ export default function Portfolio() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
-                  className={`p-2 rounded-full transition-colors cursor-none ${isDarkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"}`}
+                  className={`p-2 rounded-full transition-colors ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${isDarkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"}`}
                 >
                   
                 </button>
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className={`p-2 rounded-full transition-colors cursor-none ${isDarkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"}`}
+                  className={`p-2 rounded-full transition-colors ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${isDarkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"}`}
                 >
                   <div className="w-5 h-5 relative">
                     <div className={`absolute top-2 w-5 h-0.5 rotate-45 ${isDarkMode ? "bg-white" : "bg-black"}`}></div>
@@ -216,7 +234,7 @@ export default function Portfolio() {
                     <a
                       href="#hero"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-400 cursor-none hover:translate-x-2.5"
+                      className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-400 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
                       onMouseLeave={() => setIsHoveringText(false)}
                     >
@@ -228,7 +246,7 @@ export default function Portfolio() {
                     <a
                       href="#work"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-500 cursor-none hover:translate-x-2.5"
+                      className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-500 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
                       onMouseLeave={() => setIsHoveringText(false)}
                     >
@@ -240,7 +258,7 @@ export default function Portfolio() {
                     <a
                       href="#about"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-600 cursor-none hover:translate-x-2.5"
+                      className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-600 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
                       onMouseLeave={() => setIsHoveringText(false)}
                     >
@@ -252,7 +270,7 @@ export default function Portfolio() {
                     <a
                       href="#mentoring"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-700 cursor-none hover:translate-x-2.5"
+                      className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-700 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
                       onMouseLeave={() => setIsHoveringText(false)}
                     >
@@ -264,7 +282,7 @@ export default function Portfolio() {
                     <a
                       href="#contact"
                       onClick={() => setIsMenuOpen(false)}
-                      className="block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-800 cursor-none hover:translate-x-2.5"
+                      className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-800 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
                       onMouseLeave={() => setIsHoveringText(false)}
                     >
@@ -288,7 +306,7 @@ export default function Portfolio() {
               </div>
               <a
                 href="https://www.linkedin.com/in/jayson-reales/"
-                className={`transition-colors flex items-center gap-2 cursor-none ${isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-neutral-950"}`}
+                className={`transition-colors flex items-center gap-2 ${isLargeScreen ? "cursor-none" : "cursor-auto"} ${isDarkMode ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-neutral-950"}`}
                 onMouseEnter={() => setIsHoveringText(true)}
                 onMouseLeave={() => setIsHoveringText(false)}
               >
@@ -369,9 +387,10 @@ export default function Portfolio() {
               </p>
               <Button
                 variant="ghost"
-                className="text-green-400 hover:text-green-300 transition-all duration-300 cursor-none text-sm lg:text-lg "
+                className={`text-green-400 hover:text-green-300 transition-all duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"} text-sm lg:text-lg`}
               >
-                See Selected Works <ArrowDown className="h-4 w-4" />
+                <a href="#work" className="flex items-center gap-2">See Selected Works <ArrowDown className="h-4 w-4" /></a>
+                
               </Button>
             </div>
          </div>
@@ -402,7 +421,7 @@ export default function Portfolio() {
 
         {/* Featured Project */}
         <Card
-          className={`transition-all duration-1000 delay-200 hover:scale-[1.02] overflow-hidden cursor-none ${
+          className={`transition-all duration-1000 delay-200 hover:scale-[1.02] overflow-hidden ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
             visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           } ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"} mb-8`}
           onMouseEnter={() => setIsHoveringProject(true)}
@@ -410,7 +429,7 @@ export default function Portfolio() {
         >
           <CardContent className="p-0">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+              <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
               <Image
                 src="/images/apcia.jpg?height=600&width=1200"
                 alt="APCIA E-Commerce"
@@ -420,7 +439,7 @@ export default function Portfolio() {
               />
               <Button
                 size="icon"
-                className="absolute top-4 right-4 bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-300 cursor-none"
+                className={`absolute top-4 right-4 bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-300 ${isLargeScreen ? "cursor-none" : "cursor-auto"}`}
               >
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -454,7 +473,7 @@ export default function Portfolio() {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           <Card
-            className={`transition-all duration-1000 delay-400 hover:scale-[1.02] overflow-hidden cursor-none ${
+            className={`transition-all duration-1000 delay-400 hover:scale-[1.02] overflow-hidden ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
               visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             } ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
             onMouseEnter={() => setIsHoveringProject(true)}
@@ -462,7 +481,7 @@ export default function Portfolio() {
           >
             <CardContent className="p-0">
               <div className="relative">
-                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
                 <Image
                   src="/images/kapuntukan.png?height=300&width=600"
                   alt="Kapuntukan Resto Bar Reservation and Scheduling"
@@ -491,7 +510,7 @@ export default function Portfolio() {
           </Card>
 
           <Card
-            className={`transition-all duration-1000 delay-600 hover:scale-[1.02] overflow-hidden cursor-none ${
+            className={`transition-all duration-1000 delay-600 hover:scale-[1.02] overflow-hidden ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
               visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             } ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
             onMouseEnter={() => setIsHoveringProject(true)}
@@ -499,7 +518,7 @@ export default function Portfolio() {
           >
             <CardContent className="p-0">
               <div className="relative">
-                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">SHIPPED</Badge>
+                <Badge className="absolute top-4 left-4 z-10 bg-green-500 text-neutral-950">DONE</Badge>
                 <Image
                   src="/images/solana.png?height=300&width=600"
                   alt="Solana Staking DApp"
@@ -528,7 +547,7 @@ export default function Portfolio() {
           </Card>
 
           <Card
-            className={`transition-all duration-1000 delay-600 hover:scale-[1.02] overflow-hidden cursor-none ${
+            className={`transition-all duration-1000 delay-600 hover:scale-[1.02] overflow-hidden ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
               visibleSections.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             } ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
             onMouseEnter={() => setIsHoveringProject(true)}
@@ -604,7 +623,7 @@ export default function Portfolio() {
               }
             </p>
             <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
-              {"Beyond web development, I'm diving into Web3, exploring the world of cryptocurrency trading and airdrops, and enjoying downtime playing guitar or spending time with my dog, Bela"}
+              {"Beyond web development, I'm diving into Web3, exploring the world of cryptocurrency trading and airdrops, and enjoying downtime playing guitar or spending time with my dog, Bela."}
             </p>
           </div>
         </div>
@@ -646,7 +665,7 @@ export default function Portfolio() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="transition-all duration-300 hover:scale-110 cursor-none"
+                  className={`transition-all duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onClick={() => setOpenDropdown(openDropdown === 0 ? null : 0)}
                 >
                   <Plus className={`h-4 w-4 transition-transform ${openDropdown === 0 ? "rotate-45" : ""}`} />
@@ -696,7 +715,7 @@ export default function Portfolio() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="transition-all duration-300 hover:scale-110 cursor-none"
+                  className={`transition-all duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onClick={() => setOpenDropdown(openDropdown === 1 ? null : 1)}
                 >
                   <Plus className={`h-4 w-4 transition-transform ${openDropdown === 1 ? "rotate-45" : ""}`} />
@@ -746,7 +765,7 @@ export default function Portfolio() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="transition-all duration-300 hover:scale-110 cursor-none"
+                  className={`transition-all duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onClick={() => setOpenDropdown(openDropdown === 2 ? null : 2)}
                 >
                   <Plus className={`h-4 w-4 transition-transform ${openDropdown === 2 ? "rotate-45" : ""}`} />
@@ -764,7 +783,7 @@ export default function Portfolio() {
             </div>
 
             <Button
-              className={`bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-1000 delay-600 hover:scale-105 cursor-none ${
+              className={`bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-1000 delay-600 hover:scale-105 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
                 visibleSections.has("about") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
@@ -817,7 +836,7 @@ export default function Portfolio() {
             ].map((skill, index) => (
               <h3
                 key={skill}
-                className={`text-4xl md:text-5xl font-light transition-all duration-200 hover:text-green-400 cursor-none ${
+                className={`text-4xl md:text-5xl font-light transition-all duration-200 hover:text-green-400 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${
                   visibleSections.has("skills") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${200 + index * 100}ms` }}
@@ -856,7 +875,7 @@ export default function Portfolio() {
               Looking for 1:1 mentoring to grow your web development career?
             </h3>
             <p
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8 leading-relaxed transition-all duration-1000 delay-300 ${
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8 leading-relaxed transition-all text-justify duration-1000 delay-300 ${
                 visibleSections.has("mentoring") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               onMouseEnter={() => setIsHoveringText(true)}
@@ -888,7 +907,7 @@ export default function Portfolio() {
                   /1hr session
                 </span>
               </div>
-              <Button className="bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-300 hover:scale-105 cursor-none">
+              <Button className="bg-green-500 hover:bg-green-600 text-neutral-950 transition-all duration-300 hover:scale-105 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}">
                 <a target="_blank" className="flex flex-row" href="https://calendar.app.google/EBGM6HYNXev2TZC67">
                 <Calendar className="mr-2 h-4 w-4" />
                 Book now
@@ -909,33 +928,35 @@ export default function Portfolio() {
                 Testimonials from my mentees
               </h4>
               <Card
-                className={`transition-all duration-300 hover:scale-[1.02] cursor-none ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
+                className={`transition-all duration-300 hover:scale-[1.02] ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} ${isDarkMode ? "bg-gray-900 border-gray-800 hover:border-gray-700" : "bg-gray-50 border-gray-200 hover:border-gray-300"}`}
               >
-                <CardContent className="p-6 flex items-center justify-between gap-4">
+                <CardContent className="lg:p-6 flex items-center justify-between gap-3 lg:gap-4">
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="transition-all duration-300 hover:scale-110 cursor-none bg-white text-neutral-950 p-4 rounded-full"
+                    className={`transition-all duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} bg-white text-neutral-950 p-4 rounded-full`}
                     onClick={() => setTestimonialIndex((testimonialIndex - 1 + testimonials.length) % testimonials.length)}
                     aria-label="Previous testimonial"
                   >
-                    <ChevronRight className="h-4 w-4 rotate-180" />
+                    <ChevronRight className="h-1 w-1 lg:h-3 lg:w-3 rotate-180" />
                   </Button>
-                  <p
-                    className="text-gray-300 mb-0 flex-1"
-                    onMouseEnter={() => setIsHoveringText(true)}
-                    onMouseLeave={() => setIsHoveringText(false)}
-                  >
-                    {testimonials[testimonialIndex]}
-                  </p>
+                  <div className="flex-1 flex flex-row items-center justify-center">
+                    <p
+                      className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} mb-0 text-md text-justify lg:text-base`}
+                      onMouseEnter={() => setIsHoveringText(true)}
+                      onMouseLeave={() => setIsHoveringText(false)}
+                    >
+                      {testimonials[testimonialIndex].text}
+                    </p>
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="transition-all duration-300 hover:scale-110 cursor-none bg-white text-neutral-950 p-4 rounded-full"
+                    className={`transition-all duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'} bg-white text-neutral-950 p-4 rounded-full`}
                     onClick={() => setTestimonialIndex((testimonialIndex + 1) % testimonials.length)}
                     aria-label="Next testimonial"
                   >
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-1 w-1 lg:h-3 lg:w-3" />
                   </Button>
                 </CardContent>
               </Card>
@@ -971,7 +992,7 @@ export default function Portfolio() {
                 >
                   Drop me a line
                 </span>
-                <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 cursor-none">
+                <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}">
                   <ArrowRight className="h-4 w-4 text-neutral-950 rotate-[-45deg]" />
                 </div>
               </div>
@@ -981,7 +1002,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <a
                   href="#about"
-                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
+                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                 >
@@ -989,7 +1010,7 @@ export default function Portfolio() {
                 </a>
                 <a
                   href="#work"
-                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
+                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                 >
@@ -997,7 +1018,7 @@ export default function Portfolio() {
                 </a>
                 <a
                   href="#mentoring"
-                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
+                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                 >
@@ -1007,7 +1028,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <a
                   href="https://www.linkedin.com/in/jayson-reales/"
-                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
+                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                 >
@@ -1015,7 +1036,7 @@ export default function Portfolio() {
                 </a>
                 <a
                   href="https://drive.google.com/file/d/1NXpj89alSl-VGSrKevt2lnMX2gZd9ha6/view?usp=sharing"
-                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block cursor-none`}
+                  className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
                   onMouseEnter={() => setIsHoveringText(true)}
                   onMouseLeave={() => setIsHoveringText(false)}
                   target="_blank"
@@ -1028,7 +1049,7 @@ export default function Portfolio() {
         </div>
 
         <div
-          className={`flex flex-col gap-2 ${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
+          className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
         >
           <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
             Made with care and plenty of coffee
