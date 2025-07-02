@@ -342,7 +342,7 @@ export default function Portfolio() {
           </h1>
         </div>
 
-         <div className="flex flex-col gap-4 lg:mb-1">
+         <div className="flex flex-col gap-4 mb-16 lg:mb-1">
           <div
               className={`flex flex-wrap gap-3 lg:gap-4 transition-all duration-1000 delay-200 ${
                 visibleSections.has("hero") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
