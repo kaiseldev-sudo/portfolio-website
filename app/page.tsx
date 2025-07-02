@@ -1049,7 +1049,7 @@ export default function Portfolio() {
         </div>
 
         <div
-          className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
+          className={`flex flex-col gap-2 ${isDarkMode ? "text-gray-500" : "text-gray-500"} flex justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
         >
           <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
             Made with care and plenty of coffee
