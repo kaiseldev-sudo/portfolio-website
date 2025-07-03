@@ -3,8 +3,8 @@ import { useState, useEffect} from "react"
 import { ArrowRight } from "lucide-react"
 
 export default function Footer() {
-    const [isDarkMode, setIsDarkMode] = useState(true)
-    const [isHoveringText, setIsHoveringText] = useState(false)
+    const [isDarkMode] = useState(true)
+    const [setIsHoveringText] = useState(false)
     const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     useEffect(() => {
