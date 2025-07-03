@@ -1,11 +1,6 @@
 "use client"
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect} from "react"
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
 
 export default function Footer() {
     const [isDarkMode, setIsDarkMode] = useState(true)
