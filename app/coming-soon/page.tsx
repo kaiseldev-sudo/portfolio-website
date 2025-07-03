@@ -6,6 +6,7 @@ import Link from "next/link"
 import Footer from "../footer/page"
 import Lottie from "lottie-react"
 
+
 // Lottie component using the coming-soon.json file
 const ComingSoonLottie = () => {
   const [animationData, setAnimationData] = useState(null)
@@ -51,6 +52,8 @@ export default function ComingSoon() {
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [isLargeScreen, setIsLargeScreen] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://jaysonreales.vercel.app';
 
   // Set a target date (30 days from now)
   const targetDate = new Date()
@@ -85,8 +88,6 @@ export default function ComingSoon() {
   }, []);
 
   const headerBackground = scrollY > 50
-
-  
 
   return (
     <div
@@ -211,7 +212,7 @@ export default function ComingSoon() {
                 <ul className="space-y-6 list-none">
                   <li className="relative group">
                     <a
-                      href="#hero"
+                      href={`${BASE_URL}`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-400 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -223,7 +224,7 @@ export default function ComingSoon() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#work"
+                      href={`${BASE_URL}/#work`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-500 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -235,7 +236,7 @@ export default function ComingSoon() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#about"
+                      href={`${BASE_URL}/#about`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-600 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -247,7 +248,7 @@ export default function ComingSoon() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#mentoring"
+                      href={`${BASE_URL}/#mentoring`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-700 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -259,7 +260,7 @@ export default function ComingSoon() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#contact"
+                      href={`${BASE_URL}/#contact`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-800 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}

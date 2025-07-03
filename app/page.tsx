@@ -29,6 +29,8 @@ export default function Portfolio() {
       image: '/images/profile.jpg', // Example image from your public/images
     },
   ];
+
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://jaysonreales.vercel.app';
   
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [isLargeScreen, setIsLargeScreen] = useState(true);
@@ -232,7 +234,7 @@ export default function Portfolio() {
                 <ul className="space-y-6 list-none">
                   <li className="relative group">
                     <a
-                      href="#hero"
+                      href={`${BASE_URL}`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-400 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -244,7 +246,7 @@ export default function Portfolio() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#work"
+                      href={`${BASE_URL}/#work`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-500 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -256,7 +258,7 @@ export default function Portfolio() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#about"
+                      href={`${BASE_URL}/#about`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-600 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -268,7 +270,7 @@ export default function Portfolio() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#mentoring"
+                      href={`${BASE_URL}/#mentoring`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-700 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
@@ -280,7 +282,7 @@ export default function Portfolio() {
                   </li>
                   <li className="relative group">
                     <a
-                      href="#contact"
+                      href={`${BASE_URL}/#contact`}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block text-5xl md:text-6xl font-light hover:text-green-400 transition-all duration-500 animate-in slide-in-from-right-10 delay-800 ${isLargeScreen ? "cursor-none" : "cursor-auto"} hover:translate-x-2.5`}
                       onMouseEnter={() => setIsHoveringText(true)}
