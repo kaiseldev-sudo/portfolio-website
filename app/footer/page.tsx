@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react"
 
 export default function Footer() {
     const [isDarkMode] = useState(true)
-    const [setIsHoveringText] = useState(false)
     const [isLargeScreen, setIsLargeScreen] = useState(true);
 
     useEffect(() => {
@@ -28,8 +27,6 @@ export default function Footer() {
         <div>
             <h2
             className="text-4xl md:text-5xl font-light mb-2"
-            onMouseEnter={() => setIsHoveringText(true)}
-            onMouseLeave={() => setIsHoveringText(false)}
             >
             {"Let's talk"}
             </h2>
@@ -37,8 +34,6 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-12">
                 <span
                 className="text-4xl md:text-5xl font-light"
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 >
                 Drop me a line
                 </span>
@@ -53,24 +48,18 @@ export default function Footer() {
                 <a
                 href="#about"
                 className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 >
                 About
                 </a>
                 <a
                 href="#work"
                 className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 >
                 Works
                 </a>
                 <a
                 href="#mentoring"
                 className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 >
                 Mentoring
                 </a>
@@ -79,16 +68,12 @@ export default function Footer() {
                 <a
                 href="https://www.linkedin.com/in/jayson-reales/"
                 className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 >
                 LinkedIn
                 </a>
                 <a
                 href="https://drive.google.com/file/d/1NXpj89alSl-VGSrKevt2lnMX2gZd9ha6/view?usp=sharing"
                 className={`${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-neutral-950"} transition-colors duration-300 block ${isLargeScreen ? 'cursor-none' : 'cursor-auto'}`}
-                onMouseEnter={() => setIsHoveringText(true)}
-                onMouseLeave={() => setIsHoveringText(false)}
                 target="_blank"
                 >
                 See full CV
@@ -101,10 +86,10 @@ export default function Footer() {
         <div
             className={`${isDarkMode ? "text-gray-500" : "text-gray-500"} flex flex-col lg:flex-row gap-1 justify-between items-center text-sm pt-8 border-t transition-colors ${isDarkMode ? "border-gray-800" : "border-gray-200"}`}
             >
-            <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
+            <p>
                 Made with care and plenty of coffee
             </p>
-            <p onMouseEnter={() => setIsHoveringText(true)} onMouseLeave={() => setIsHoveringText(false)}>
+            <p>
                 © 2025 Jayson Reales
             </p>
         </div>
