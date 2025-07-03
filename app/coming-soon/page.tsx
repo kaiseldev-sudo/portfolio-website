@@ -50,12 +50,6 @@ export default function ComingSoon() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHoveringText, setIsHoveringText] = useState(false)
   const [isLargeScreen, setIsLargeScreen] = useState(true)
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  })
 
   // Set a target date (30 days from now)
   const targetDate = new Date()
@@ -88,24 +82,6 @@ export default function ComingSoon() {
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
-
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        })
-      }
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [targetDate])
 
   const headerBackground = scrollY > 50
 
@@ -187,7 +163,7 @@ export default function ComingSoon() {
             onMouseEnter={() => setIsHoveringText(true)}
             onMouseLeave={() => setIsHoveringText(false)}
           >
-            I'm working hard to bring you something incredible. This project page is currently under development and will be ready soon.
+            {`I'm working hard to bring you something incredible. This project page is currently under development and will be ready soon.`}
           </p>
 
           {/* Action Buttons */}
